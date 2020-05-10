@@ -21,6 +21,8 @@ namespace ScoutsMealPlanner.Data
             base.OnModelCreating(builder);
             ModelBuilderExtensions.Seed(builder);
             builder.ApplyConfiguration(new IngredientEntryConfiguration());
+            builder.ApplyConfiguration(new MealRecipeConfiguration());
+            builder.ApplyConfiguration(new RecipeEquipmentConfiguration());
         }
     }
 }
