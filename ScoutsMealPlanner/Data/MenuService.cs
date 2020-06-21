@@ -1,4 +1,5 @@
-﻿using ScoutsMealPlanner.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using ScoutsMealPlanner.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,9 +9,17 @@ namespace ScoutsMealPlanner.Data
 {
     public class MenuService
     {
-        public Task<ICollection<Menu>> GetMenusAsync()
+        private ApplicationDbContext context;
+
+        public MenuService(ApplicationDbContext context)
         {
-            throw new NotImplementedException();
+            this.context = context;
+        }
+
+        
+        public async Task<List<Menu>> GetMenusAsync()
+        {
+            return await context.Menus.ToListAsync<Menu>();
         }
     }
 }
